@@ -6,6 +6,7 @@ void setup(){
 
 void loop(){
         display_loop();
+        delay(5);
 }
 
 

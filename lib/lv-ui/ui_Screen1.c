@@ -29,7 +29,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_x(ui_Label2, 0);
     lv_obj_set_y(ui_Label2, 10);
     lv_obj_set_align(ui_Label2, LV_ALIGN_TOP_MID);
-    lv_label_set_text(ui_Label2, "DHT11 DEMO");
+    lv_label_set_text(ui_Label2, "DS18B20 DEMO");
 
     ui_Label3 = lv_label_create(ui_Screen1);
     lv_obj_set_width(ui_Label3, LV_SIZE_CONTENT);   /// 1
