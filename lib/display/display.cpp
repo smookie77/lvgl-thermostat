@@ -1,8 +1,8 @@
 #include <display.h>
 
- /*LVGL draw into this buffer, 1/10 screen size usually works well. The size is in bytes*/
- #define DRAW_BUF_SIZE (TFT_HOR_RES * TFT_VER_RES / 10 * (LV_COLOR_DEPTH / 8))
- uint32_t draw_buf[DRAW_BUF_SIZE / 4];
+/*LVGL draw into this buffer, 1/10 screen size usually works well. The size is in bytes*/
+#define DRAW_BUF_SIZE (TFT_HOR_RES * TFT_VER_RES / 10 * (LV_COLOR_DEPTH / 8))
+uint32_t draw_buf[DRAW_BUF_SIZE / 4];
  
 
 /*use Arduinos millis() as tick source*/
@@ -23,6 +23,13 @@ void display_setup(){
         ui_init();
 }
 
+unsigned long lastTickMillis = 0;
+
 void display_loop(){
+        unsigned int tickPeriod = millis() - lastTickMillis;
+        lv_tick_inc(tickPeriod);
+        lastTickMillis = millis();
+
         lv_timer_handler();
+        vTaskDelay(pdMS_TO_TICKS(1));
 }
